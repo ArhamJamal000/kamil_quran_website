@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory, request, jsonify
+from flask import Flask, render_template, send_from_directory, request, jsonify, redirect
 
 # Initialize Flask App
 app = Flask(__name__)
@@ -17,22 +17,9 @@ def index():
 
 @app.route('/download')
 def download():
-    """Handles the APK file download."""
-    apk_filename = 'kamil_quran.apk'
-    static_folder = os.path.join(app.root_path, 'static')
-    apk_path = os.path.join(static_folder, apk_filename)
-
-    if os.path.exists(apk_path):
-        return send_from_directory(
-            directory=static_folder,
-            path=apk_filename,
-            as_attachment=True
-        )
-    else:
-        return jsonify({
-            "status": "error",
-            "message": f"{apk_filename} not found. Please ensure the file exists in the 'static' directory."
-        }), 404
+    """Redirects to Google Drive direct download URL."""
+    drive_url = "https://drive.google.com/uc?export=download&id=1jEW6NNKHkkn5Qvpvd2jazLMleh8IOvX5"
+    return redirect(drive_url)
 
 @app.route('/contact', methods=['POST'])
 def contact():
