@@ -17,9 +17,9 @@ def index():
 
 @app.route('/download')
 def download():
-    """Redirects to Google Drive direct download URL."""
-    drive_url = "https://drive.google.com/uc?export=download&id=1jEW6NNKHkkn5Qvpvd2jazLMleh8IOvX5"
-    return redirect(drive_url)
+    """Redirects to Mediafire direct download URL."""
+    mediafire_url = "https://www.mediafire.com/file/ojihrltx24g4m8q/Kamil_Quran.apk/file"
+    return redirect(mediafire_url)
 
 @app.route('/contact', methods=['POST'])
 def contact():
